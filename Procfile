@@ -1,1 +1,1 @@
-web: gunicorn <kavin-swe1-app>.wsgi
+web: gunicorn <swe1-app>.wsgi
