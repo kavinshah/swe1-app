@@ -33,6 +33,7 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+
 def create_question(question_text, days):
     """
     Create a question with the given `question_text` and published the
