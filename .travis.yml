@@ -5,10 +5,11 @@ python:
 
 install: pip install -r requirements.txt
 
-before script:
-- python manage.py collectstatic --noinput
-
 script:
+- python manage.py migrate
 - flake8 .
 - black --check
--coverage run --source=polls,swe1app manage.py test
+- coverage run --source=polls,swe1app manage.py test
+
+after_script:
+- coveralls
