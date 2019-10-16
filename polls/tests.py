@@ -52,10 +52,10 @@ class QuestionIndexViewTests(TestCase):
 		"""
 		If no questions exist, an appropriate message is displayed.
 		"""
-		response = self.client.get(reverse('polls:index'))
+		response = self.client.get(reverse("polls:index"))
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, "No polls are available.")
-		self.assertQuerysetEqual(response.context['latest_question_list'], [])
+		self.assertQuerysetEqual(response.context["latest_question_list"], [])
 
 	def test_past_question(self):
 		"""
@@ -63,10 +63,10 @@ class QuestionIndexViewTests(TestCase):
 		index page.
 		"""
 		create_question(question_text="Past question.", days=-30)
-		response = self.client.get(reverse('polls:index'))
+		response = self.client.get(reverse("polls:index"))
 		self.assertQuerysetEqual(
-			response.context['latest_question_list'],
-			['<Question: Past question.>']
+			response.context["latest_question_list"],
+			["<Question: Past question.>"]
 		)
 
 	def test_future_question(self):
